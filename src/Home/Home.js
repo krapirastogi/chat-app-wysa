@@ -8,9 +8,7 @@ const Home = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
-  const [username, setUsername] = useState(
-    localStorage.getItem("username") || ""
-  );
+  
   const [image, setImage] = useState(localStorage.getItem("image") || "");
 
   if (!localStorage.getItem("selectedTheme")) {
@@ -87,7 +85,7 @@ const Home = () => {
     localStorage.removeItem("image");
     localStorage.removeItem("password");
     localStorage.removeItem("userImage");
-    setUsername("");
+   
     setImage(null);
     navigate("/");
   };

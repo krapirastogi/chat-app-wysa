@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useMemo } from "react";
 import "./ColorSwitch.css";
 
 const ColorSwitch = ({ onColorChange }) => {
-  const predefinedThemes = [
+  const predefinedThemes = useMemo(() => [
     {
       name: "Default",
       color: "#FFF",
@@ -22,9 +22,9 @@ const ColorSwitch = ({ onColorChange }) => {
       name: "Purple",
       color: "#f6f6f6",
       background: "linear-gradient(239.26deg, #af89fb 63.17%, #9a70f4 94.92%)",
-     
     },
-  ];
+  ], []);
+  
 
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [customTheme, setCustomTheme] = useState({ color: "", background: "" });
@@ -36,7 +36,7 @@ const ColorSwitch = ({ onColorChange }) => {
     } else {
       setSelectedTheme(predefinedThemes[0]);
     }
-  }, []);
+  }, [predefinedThemes]);
 
   useEffect(() => {
     if (selectedTheme) {
